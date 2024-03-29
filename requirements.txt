@@ -1,0 +1,5 @@
+openai
+os
+json
+python--dotenv
+gradio
