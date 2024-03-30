@@ -28,8 +28,8 @@ def CustomChatGPT(user_input, user_id):
         user_profile["name"] = user_input
         return f"Hello {user_input}, how can I assist you today?"
 
-    user_profile["conversations"].append({"role": user_profile["name"], "content": user_input})
-    messages.append({"role": user_profile["name"], "content": user_input})
+    user_profile["conversations"].append({"role": "user", "content": user_input})
+    messages.append({"role": "user", "content": user_input})
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -43,4 +43,4 @@ def CustomChatGPT(user_input, user_id):
     return reply
 
 demo = gr.Interface(fn=CustomChatGPT, inputs="text", outputs="text", title="Custom GPT")
-demo.launch(share=True)
+demo.launch()
